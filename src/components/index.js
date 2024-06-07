@@ -70,7 +70,7 @@ const App = ({ accessToken }) => {
     setLoading(true);
     api
       .fetchAgents(accessToken)
-      .then((response) => setAgents(response.data))
+      .then((response) => setAgents(response && response.data || []))
       .finally(() => setLoading(false));
   };
 
@@ -111,10 +111,10 @@ const App = ({ accessToken }) => {
       filteredAgents = agents;
       break;
     case "Online":
-      filteredAgents = agents.filter((e) => e.status === "accepting chats");
+      filteredAgents = agents.filter((e) => e.login_status === "accepting chats");
       break;
     case "Offline":
-      filteredAgents = agents.filter((e) => e.status !== "accepting chats");
+      filteredAgents = agents.filter((e) => e.login_status !== "accepting chats");
       break;
     default:
       console.error(`Unexpected tabId: ${tabId}`);

@@ -59,7 +59,7 @@ const spaceStyle = (area) => `
   padding-top: 25px;
 `;
 
-export default ({ login, permission, status, name, accessToken }) => {
+export default ({ login, permission, status: login_status, name, accessToken }) => {
   const [modals, setModals] = useState([false, false, false]);
   const [agentRatings, setAgentRatings] = useState({});
   const [agentAvailability, setAgentAvailability] = useState({});
@@ -119,7 +119,7 @@ export default ({ login, permission, status, name, accessToken }) => {
         <span>{permission}</span>
       </span>
       <span css={rowStyle("status")}>
-        {status === "accepting chats" ? (
+        {login_status === "accepting chats" ? (
           <MaterialIcon icon="fiber_manual_record" color="#4bb678" />
         ) : (
           <MaterialIcon
@@ -127,7 +127,7 @@ export default ({ login, permission, status, name, accessToken }) => {
             color="rgba(0, 0, 0, 0.54)"
           />
         )}
-        <span>{status}</span>
+        <span>{login_status}</span>
       </span>
       <div css={lineStyle("line")} />
       <div css={spaceStyle("space")}>Available charts:</div>

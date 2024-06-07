@@ -56,7 +56,7 @@ const ArrowStyle = `
 
 const Agent = ({ agentData = [], accessToken }) => {
   const [showDetails, setShowDetails] = useState(false);
-  const { avatar, name, status, login, permission } = agentData;
+  const { avatar, name, login_status, login, permission } = agentData;
 
   return (
     <div css={WrapperStyle}>
@@ -68,7 +68,7 @@ const Agent = ({ agentData = [], accessToken }) => {
       >
         <img
           src={avatar.includes("https") ? avatar : `https://${avatar}`}
-          css={AvaratStyle(status)}
+          css={AvaratStyle(login_status)}
           alt="avatar"
         />
         <span css={NameStyle}>{name}</span>
@@ -86,7 +86,7 @@ const Agent = ({ agentData = [], accessToken }) => {
         <AgentDetails
           login={login}
           permission={permission}
-          status={status}
+          status={login_status}
           name={name}
           accessToken={accessToken}
         />
